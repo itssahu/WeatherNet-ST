@@ -24,7 +24,7 @@ In August, ConvLSTM perform better than XGBoost for forecasting total precipitat
 
 <img width="387" height="39" alt="image" src="https://github.com/user-attachments/assets/93bb0445-d81c-4480-8577-a3eafa59299b" />
 
-
+(red = XGB better, blue = ConvLSTM better, white = similar performance)
 
 <img width="2300" height="600" alt="t2m_forecast_xgb_vs_convlstm_2025_01_01" src="https://github.com/user-attachments/assets/3a07497d-7591-409b-a77f-015b3da963ab" />
 

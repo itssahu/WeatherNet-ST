@@ -4,7 +4,8 @@ Spatiotemporal Short-Term Weather Forecasting  using XGBoost and ConvLSTM (Odish
 Data: ERA5 2m temperature, Total precipitation
 Train: 2020-2021 | Validation: 2023 | Test: 2024
 
-Relative Performance: $$
+Relative Performance: 
+$$
 \text{rel\_perf} = \frac{\text{rmse} - \text{rmse\_t2m}}{\text{rmse} + \text{rmse\_t2m}}
 $$
 

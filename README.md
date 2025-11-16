@@ -11,12 +11,12 @@ In August, ConvLSTM perform better than XGBoost for forecasting total precipitat
 <img width="6478" height="1765" alt="tp_rmse_xgb_vs_convlstm_2024_08_01_relative" src="https://github.com/user-attachments/assets/548c0899-1116-4a96-89c2-b6ae52a0085c" />
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Forecasting for 1 Jan 2025
+Forecasting for 1 Jan 2025
 
 $$
 AE\\_XGB = |t2m\\_pred\\_xgb - t2m\\_actual|, \quad
 AE\\_ConvLSTM = |t2m\\_pred\\_conv - t2m\\_actual|, \quad
-AE\\_diff = AE\\_ConvLSTM - AE\\_XGB
+AE\\_diff = AE\\_ConvLSTM - AE\\_XGB  \quad
 $$
 
 

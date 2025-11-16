@@ -1,8 +1,8 @@
 # WeatherNet-ST
 Spatiotemporal Short-Term Weather Forecasting  using XGBoost and ConvLSTM (Odisha).
 
-### Data: ERA5 2m temperature, Total precipitation
-### Train: 2020-2021 | Validation: 2023 | Test: 2024
+Data: ERA5 2m temperature, Total precipitation
+Train: 2020-2021 | Validation: 2023 | Test: 2024
 
 In May, XGBoost perform better than ConvLSTM for forecasting temperature(2m) across grids as can be seen in following figure:
 <img width="6478" height="1765" alt="t2m_rmse_xgb_vs_convlstm_2024_05_01_relative" src="https://github.com/user-attachments/assets/5e49596d-7c1f-444b-bab5-ec5af4f83fc6" />
@@ -15,15 +15,15 @@ In August, ConvLSTM perform better than XGBoost for forecasting total precipitat
 
 ### Temperature (t2m) Absolute Errors
 
-AE\_XGB = $|t2m\_pred - t2m\_actual|$  
-AE\_ConvLSTM = $|t2m\_pred\_conv - t2m\_actual|$  
-AE\_diff = $AE\_ConvLSTM - AE\_XGB$
+AE\XGB = $|t2m\_pred - t2m\actual|$  
+AE\ConvLSTM = $|t2m\pred\conv - t2m\actual|$  
+AE\diff = $AE\ConvLSTM - AE\XGB$
 
 ### Precipitation (tp) Absolute Errors
 
-AE\_XGB = $|tp\_pred - tp\_actual|$  
-AE\_ConvLSTM = $|tp\_pred\_conv - tp\_actual|$  
-AE\_diff = $AE\_ConvLSTM - AE\_XGB$
+AE\XGB = $|tp\_pred - tp\actual|$  
+AE\ConvLSTM = $|tp\pred\conv - tp\actual|$  
+AE\diff = $AE\ConvLSTM - AE\XGB$
 
 <img width="2300" height="600" alt="t2m_forecast_xgb_vs_convlstm_2025_01_01" src="https://github.com/user-attachments/assets/3a07497d-7591-409b-a77f-015b3da963ab" />
 

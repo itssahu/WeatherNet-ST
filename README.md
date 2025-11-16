@@ -71,7 +71,7 @@ In practice, these can capture patterns like large-scale temperature gradients, 
 
 
 
-Relative Performance: 
+### Relative Performance: 
 
 <img width="420" height="71" alt="image" src="https://github.com/user-attachments/assets/dbffd264-434f-41aa-9bdb-e67c8fd71719" />
 

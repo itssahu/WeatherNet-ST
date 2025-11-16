@@ -19,10 +19,7 @@ In August, ConvLSTM perform better than XGBoost for forecasting total precipitat
 <img width="6478" height="1765" alt="tp_rmse_xgb_vs_convlstm_2024_08_01_relative" src="https://github.com/user-attachments/assets/548c0899-1116-4a96-89c2-b6ae52a0085c" />
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Forecasting for 1 Jan 2025
-
-<img width="981" height="37" alt="image" src="https://github.com/user-attachments/assets/f76272a8-13a5-4020-8642-b837225582d7" />
-
+## Forecasting for 1 Jan 2025
 
 <img width="387" height="39" alt="image" src="https://github.com/user-attachments/assets/93bb0445-d81c-4480-8577-a3eafa59299b" />
 

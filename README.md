@@ -13,8 +13,6 @@ In August, ConvLSTM perform better than XGBoost for forecasting total precipitat
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Forecasting for 1 Jan 2025
 
-<pre> ``` AE_XGB = |t2m_pred - t2m_actual| AE_ConvLSTM = |t2m_pred_conv - t2m_actual| AE_diff = AE_ConvLSTM - AE_XGB ``` </pre>
-
 <img width="2300" height="600" alt="t2m_forecast_xgb_vs_convlstm_2025_01_01" src="https://github.com/user-attachments/assets/3a07497d-7591-409b-a77f-015b3da963ab" />
 
 <img width="2300" height="600" alt="tp_forecast_xgb_vs_convlstm_mm_2025_01_01" src="https://github.com/user-attachments/assets/78baa017-63c8-46de-8fe6-0e972e9709be" />

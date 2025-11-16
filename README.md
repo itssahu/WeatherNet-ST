@@ -5,7 +5,8 @@ Data: ERA5 2m temperature, Total precipitation
 Train: 2020-2021 | Validation: 2023 | Test: 2024
 
 Relative Performance: 
-<img width="425" height="71" alt="image" src="https://github.com/user-attachments/assets/dbffd264-434f-41aa-9bdb-e67c8fd71719" />
+
+<img width="420" height="71" alt="image" src="https://github.com/user-attachments/assets/dbffd264-434f-41aa-9bdb-e67c8fd71719" />
 
 (blue = XGB better, red = ConvLSTM better, white = similar performance)
 

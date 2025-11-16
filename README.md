@@ -40,9 +40,11 @@ Train: 2020-2021 | Validation: 2023 | Test: 2024
                      ▼
 ┌───────────────────────────────────────────────────────────────┐
 │                
-             OUTPUT PROJECTION (1×1 Conv)                  │
+             OUTPUT PROJECTION (1×1 Conv)               
+             
+             │
 │                                                               │
-│    ŷ_norm = Conv2D(h_7, out_channels=1, kernel=1×1)          │
+│    ŷ_norm = Conv2D(h_7, out_channels=1, kernel=1×1)           │
 │                                                               │
 │    Output: 1 predicted grid (H × W) for next day              │
 └───────────────────────────────────────────────────────────────┘

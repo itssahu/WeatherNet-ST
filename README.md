@@ -4,6 +4,60 @@ Spatiotemporal Short-Term Weather Forecasting  using XGBoost and ConvLSTM (Odish
 Data: ERA5 2m temperature, Total precipitation
 Train: 2020-2021 | Validation: 2023 | Test: 2024
 
+### ConvLSTM Forecasting Architecture (Schematic) 
+
+┌───────────────────────────────────────────────────────────────┐
+│                      INPUT SEQUENCE (7 DAYS)                  │
+│   X ∈ ℝ^(7 × 1 × H × W)  → 7 grids of t2m/tp (lat×lon)        │
+└───────────────────────────────────────────────────────────────┘
+                     │
+                     ▼
+┌───────────────────────────────────────────────────────────────┐
+│                   CONVLSTM RECURRENT BLOCK                    │
+│                                                               │
+│   For each timestep t:                                        │
+│                                                               │
+│     [x_t , h_(t−1)]  ──►  3×3 Conv2D  ──►  tanh  ──►  h_t     │
+│                                                               │
+│   - Input channels: 1                                         │
+│   - Hidden channels: 16                                       │
+│   - Kernel size: 3×3 (padding=1)                              │
+│   - h_0 = zeros                                               │
+│                                                               │
+│   Output after 7 steps: hidden state h_7 ∈ ℝ^(16 × H × W)     │
+└───────────────────────────────────────────────────────────────┘
+                     │
+                     ▼
+┌───────────────────────────────────────────────────────────────┐
+│                 OUTPUT PROJECTION (1×1 Conv)                  │
+│                                                               │
+│    ŷ_norm = Conv2D(h_7, out_channels=1, kernel=1×1)          │
+│                                                               │
+│    Output: 1 predicted grid (H × W) for next day              │
+└───────────────────────────────────────────────────────────────┘
+                     │
+                     ▼
+┌───────────────────────────────────────────────────────────────┐
+│                    UNNORMALIZATION STEP                       │
+│      ŷ = ŷ_norm × σ_train + μ_train                         │
+│                                                               │
+│     Final output = Forecast for date (e.g., 2025-01-01)       │
+└───────────────────────────────────────────────────────────────┘
+
+
+| Stage                      | Description                                                                |
+| -------------------------- | -------------------------------------------------------------------------- |
+| **1. Input Construction**  | Use 7 previous days of normalized climate grids.                           |
+| **2. ConvLSTM Recurrence** | Each day updates a hidden state using convolution + recurrence.            |
+| **3. Temporal Encoding**   | After 7 timesteps, the final hidden state encodes all spatiotemporal info. |
+| **4. Output Conv Layer**   | A 1×1 convolution converts hidden state → next-day grid.                   |
+| **5. Unnormalize**         | Convert normalized prediction back to °C or mm/day.                        |
+
+“The ConvLSTM uses 16 hidden channels, which act as 16 learned spatial feature maps.
+In practice, these can capture patterns like large-scale temperature gradients, local anomalies, or propagating weather systems, but the model discovers these automatically; we do not manually assign them.”
+
+
+
 Relative Performance: 
 
 <img width="420" height="71" alt="image" src="https://github.com/user-attachments/assets/dbffd264-434f-41aa-9bdb-e67c8fd71719" />

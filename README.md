@@ -23,7 +23,8 @@ In August, ConvLSTM perform better than XGBoost for forecasting total precipitat
 
 <img width="981" height="37" alt="image" src="https://github.com/user-attachments/assets/f76272a8-13a5-4020-8642-b837225582d7" />
 
-    <img width="387" height="39" alt="image" src="https://github.com/user-attachments/assets/93bb0445-d81c-4480-8577-a3eafa59299b" />
+
+<img width="387" height="39" alt="image" src="https://github.com/user-attachments/assets/93bb0445-d81c-4480-8577-a3eafa59299b" />
 
 
 

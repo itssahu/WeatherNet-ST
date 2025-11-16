@@ -8,7 +8,7 @@ Train: 2020-2021 | Validation: 2023 | Test: 2024
 
 ┌───────────────────────────────────────────────────────────────┐
 │                      
-             INPUT SEQUENCE (7 DAYS)                                          │
+                 INPUT SEQUENCE (7 DAYS)                         │
 │  
      X ∈ ℝ^(7 × 1 × H × W)  → 7 grids of t2m/tp (lat×lon)        │
 └───────────────────────────────────────────────────────────────┘
@@ -16,17 +16,21 @@ Train: 2020-2021 | Validation: 2023 | Test: 2024
                      ▼
 ┌───────────────────────────────────────────────────────────────┐
 │                  
-             CONVLSTM RECURRENT BLOCK                    │
+                    CONVLSTM RECURRENT BLOCK                    │
 │                                                               │
-│   For each timestep t:                                        │
+│        For each timestep t:                                        │
 │                                                               │
 │     [x_t , h_(t−1)]  ──►  3×3 Conv2D  ──►  tanh  ──►  h_t     │
-│                                                               │
+│    
+
+│
 │   - Input channels: 1                                         │
 │   - Hidden channels: 16                                       │
 │   - Kernel size: 3×3 (padding=1)                              │
 │   - h_0 = zeros                                               │
-│                                                               │
+│       
+
+│
 │   Output after 7 steps: hidden state h_7 ∈ ℝ^(16 × H × W)     │
 └───────────────────────────────────────────────────────────────┘
                      │
@@ -43,8 +47,9 @@ Train: 2020-2021 | Validation: 2023 | Test: 2024
                      ▼
 ┌───────────────────────────────────────────────────────────────┐
 │                 
-             UNNORMALIZATION STEP                       │
-│      ŷ = ŷ_norm × σ_train + μ_train                         │
+             UNNORMALIZATION STEP     
+                                                                 │
+│      ŷ = ŷ_norm × σ_train + μ_train                            │
 │                                                               │
 │     Final output = Forecast for date (e.g., 2025-01-01)       │
 └───────────────────────────────────────────────────────────────┘

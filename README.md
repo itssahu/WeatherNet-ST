@@ -15,7 +15,8 @@ Train: 2020-2021 | Validation: 2023 | Test: 2024
                      │
                      ▼
 ┌───────────────────────────────────────────────────────────────┐
-│                   CONVLSTM RECURRENT BLOCK                    │
+│                  
+             CONVLSTM RECURRENT BLOCK                    │
 │                                                               │
 │   For each timestep t:                                        │
 │                                                               │
@@ -31,7 +32,8 @@ Train: 2020-2021 | Validation: 2023 | Test: 2024
                      │
                      ▼
 ┌───────────────────────────────────────────────────────────────┐
-│                 OUTPUT PROJECTION (1×1 Conv)                  │
+│                
+             OUTPUT PROJECTION (1×1 Conv)                  │
 │                                                               │
 │    ŷ_norm = Conv2D(h_7, out_channels=1, kernel=1×1)          │
 │                                                               │
@@ -40,7 +42,8 @@ Train: 2020-2021 | Validation: 2023 | Test: 2024
                      │
                      ▼
 ┌───────────────────────────────────────────────────────────────┐
-│                    UNNORMALIZATION STEP                       │
+│                 
+             UNNORMALIZATION STEP                       │
 │      ŷ = ŷ_norm × σ_train + μ_train                         │
 │                                                               │
 │     Final output = Forecast for date (e.g., 2025-01-01)       │

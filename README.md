@@ -6,6 +6,7 @@ Train: 2020-2021 | Validation: 2023 | Test: 2024
 
 Relative Performance: 
 <img width="425" height="71" alt="image" src="https://github.com/user-attachments/assets/dbffd264-434f-41aa-9bdb-e67c8fd71719" />
+
 (blue = XGB better, red = ConvLSTM better, white = similar performance)
 
 In May, XGBoost perform better than ConvLSTM for forecasting temperature(2m) across grids as can be seen in following figure:

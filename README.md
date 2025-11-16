@@ -7,8 +7,10 @@ Train: 2020-2021 | Validation: 2023 | Test: 2024
 ### ConvLSTM Forecasting Architecture (Schematic) 
 
 ┌───────────────────────────────────────────────────────────────┐
-│                      INPUT SEQUENCE (7 DAYS)                  │
-│   X ∈ ℝ^(7 × 1 × H × W)  → 7 grids of t2m/tp (lat×lon)        │
+│                      
+             INPUT SEQUENCE (7 DAYS)                                          │
+│  
+     X ∈ ℝ^(7 × 1 × H × W)  → 7 grids of t2m/tp (lat×lon)        │
 └───────────────────────────────────────────────────────────────┘
                      │
                      ▼

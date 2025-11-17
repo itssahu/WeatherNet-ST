@@ -66,7 +66,11 @@ Train: 2020-2021 | Validation: 2023 | Test: 2024
 | **4. Output Conv Layer**   | A 1×1 convolution converts hidden state → next-day grid.                   |
 | **5. Unnormalize**         | Convert normalized prediction back to °C or mm/day.                        |
 
-“The ConvLSTM uses 16 hidden channels, which act as 16 learned spatial feature maps.
+#### ConvLSTM Recurrent Block — Intuition Paragraph (with math)
+
+At each day t, the ConvLSTM updates its spatial memory using four steps. Step 1: It concatenates the current input grid with the previous hidden state along the channel dimension ( [x_t , h_{t−1}] ), letting the model see both “today’s weather” and “yesterday’s memory.” Step 2: A 3×3 convolution ( W * [x_t , h_{t−1}] ) extracts local spatial patterns such as gradients, anomalies, and moving systems. Step 3: A tanh nonlinearity ( tanh(·) ) compresses values to a stable range, allowing the model to learn nonlinear spatiotemporal interactions. Step 4: The output becomes the new hidden state ( h_t ), acting as an updated spatial memory map that carries information forward. Overall intuition: the ConvLSTM learns how weather structures evolve across space and time by repeatedly applying a convolutional memory update that blends today’s grid with accumulated past information.
+
+Note: “The ConvLSTM uses 16 hidden channels, which act as 16 learned spatial feature maps.
 In practice, these can capture patterns like large-scale temperature gradients, local anomalies, or propagating weather systems, but the model discovers these automatically; we do not manually assign them.”
 
 

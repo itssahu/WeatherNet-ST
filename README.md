@@ -58,11 +58,7 @@ Instead of modeling sequences explicitly, it converts the climate signal into hi
 ### Intuition 
 
 XGBoost works by sequentially building small decision trees that learn only what the previous trees could not capture, i.e., the residual errors 
-rm=y−y^m−1
-rm=y−y^m−1
-This forces each new tree Tm to correct specific local mistakes in space–time temperature patterns rather than relearn the full signal. Because the final model is a weighted sum of many such targeted trees 
-f(x)=∑η Tm(x)
-f(x)=∑ηTm(x), it becomes extremely good at modeling non-linear climate relationships, sharp gradients, localized effects, and interactions between predictors. The regularization term
+rm=y−y^m−1, This forces each new tree Tm to correct specific local mistakes in space–time temperature patterns rather than relearn the full signal. Because the final model is a weighted sum of many such targeted trees f(x)=∑η Tm(x), it becomes extremely good at modeling non-linear climate relationships, sharp gradients, localized effects, and interactions between predictors. The regularization term
 Ω(T)=γ(#leaves)+λ∥w∥2 keeps individual trees simple, preventing overfitting even when training on high-dimensional ERA5 features. This makes XGBoost ideal for downscaling and error-correction tasks where the goal is to learn the fine-scale structure hidden inside coarse-grid climate variables.
 
 

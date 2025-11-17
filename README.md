@@ -36,6 +36,14 @@ Train: 2020-2021 | Validation: 2023 | Test: 2024
                └─────────────────────────────────────────┘
 
 
+
+XGBoost leverages five years of ERA5 history (2020–2024) to learn powerful nonlinear relationships between past weather patterns and next-day outcomes.
+Instead of modeling sequences explicitly, it converts the climate signal into high-information features (lags, rolling means, spatial encodings, seasonality) and learns how they jointly drive tomorrow’s temperature/precipitation.
+
+The model builds an ensemble of gradient-boosted regression trees, where each new tree aggressively corrects the residual mistakes of the previous ones.
+This boosting mechanism allows XGBoost to capture complex climate dependencies—threshold effects, nonlinear moisture-temperature interactions, spatial gradients—far more efficiently than a single model.
+Once trained, it becomes an extremely fast, stable, and high-accuracy forecaster, requiring only the latest feature row (from 31 Dec 2024) to produce a reliable next-day forecast for 1 Jan 2025.
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### ConvLSTM Forecasting Architecture  

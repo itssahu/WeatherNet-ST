@@ -1,7 +1,7 @@
 # WeatherNet-ST
 Spatiotemporal Short-Term Weather Forecasting System.
 
-This project uses XGBoost and ConvLSTM independently to forecast next-day temperature and precipitation over Odisha.
+This project uses XGBoost and ConvLSTM independently to forecast next-day temperature and precipitation over Odisha using ERA5 data (2020–2024).
 Both models were applied independently, allowing a comparison between a feature-based statistical learner (XGBoost) and a grid-based deep spatiotemporal model (ConvLSTM) for next-day t2m and tp forecasting.
 
 ### Data : 

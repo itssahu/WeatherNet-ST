@@ -6,7 +6,7 @@ Both models were applied independently, allowing a comparison between a feature-
 
 ### Data : 
 ERA5 2m temperature, Total precipitation
-
+Reanalysis: 0.25° x 0.25° (atmosphere)
 Train: 2020-2021 | Validation: 2023 | Test: 2024
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------

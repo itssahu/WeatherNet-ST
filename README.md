@@ -49,7 +49,25 @@ Train: 2020-2021 | Validation: 2023 | Test: 2024
                └─────────────────────────────────────────┘
 
           
+#### Top features predicting temperature
 
+| Rank | Feature       | Meaning                               | Why Important                                     |
+| ---- | ------------- | ------------------------------------- | ------------------------------------------------- |
+| 1    | **doy_sin**   | Annual seasonal heating/cooling cycle | Dominates daily t2m variability                   |
+| 2    | **longitude** | Coast–inland gradient                 | Temperature strongly depends on land–sea contrast |
+| 3    | **doy_cos**   | Second seasonal harmonic              | Fine-tunes seasonal timing and asymmetric warming |
+| 4    | **tp**        | Rainfall cooling signal               | Strong short-term cooling predictor               |
+| 5    | **latitude**  | North–south climate gradient          | Controls radiation and baseline climatology       |
+
+#### Top features predicting precipitation
+
+| Rank | Feature       | Meaning                              | Why Important                                |
+| ---- | ------------- | ------------------------------------ | -------------------------------------------- |
+| 1    | **doy_sin**   | Monsoon seasonal timing              | Strongest driver of India’s rainfall cycle   |
+| 2    | **longitude** | Moisture gradient from Bay of Bengal | Closer to Bay → more rainfall                |
+| 3    | **doy_cos**   | Detailed monsoon evolution           | Completes annual rainfall waveform           |
+| 4    | **latitude**  | North–south monsoon structure        | Controls rainfall spread and banding         |
+| 5    | **t2m**       | Convective instability indicator     | Warmer → more convection; cooler → post-rain |
 
 
 XGBoost leverages five years of ERA5 history (2020–2024) to learn powerful nonlinear relationships between past weather patterns and next-day outcomes.

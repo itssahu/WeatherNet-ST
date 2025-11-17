@@ -60,7 +60,7 @@ f(x)=∑ηTm(x), it becomes extremely good at modeling non-linear climate relati
 
 
 The model builds an ensemble of gradient-boosted regression trees, where each new tree aggressively corrects the residual mistakes of the previous ones.
-This boosting mechanism allows XGBoost to capture complex climate dependencies—threshold effects, nonlinear interactions, spatial gradients—far more efficiently than a single model.
+This boosting mechanism allows XGBoost to capture complex climate dependencies—threshold effects, nonlinear interactions, spatial gradients, far more efficiently than a single model.
 Once trained, it becomes an extremely fast, stable, and high-accuracy forecaster, requiring only the latest feature row (from 31 Dec 2024) to produce a reliable next-day forecast for 1 Jan 2025.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------

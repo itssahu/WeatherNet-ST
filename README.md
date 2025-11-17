@@ -4,6 +4,8 @@ Spatiotemporal Short-Term Weather Forecasting  using XGBoost and ConvLSTM (Odish
 Data: ERA5 2m temperature, Total precipitation
 Train: 2020-2021 | Validation: 2023 | Test: 2024
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### ConvLSTM Forecasting Architecture (Schematic) 
 
 ┌───────────────────────────────────────────────────────────────┐
@@ -83,7 +85,7 @@ Overall intuition: the ConvLSTM learns how weather structures evolve across spac
 Note: “The ConvLSTM uses 16 hidden channels, which act as 16 learned spatial feature maps.
 In practice, these can capture patterns like large-scale temperature gradients, local anomalies, or propagating weather systems, but the model discovers these automatically; we do not manually assign them.”
 
-
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Relative Performance: 
 

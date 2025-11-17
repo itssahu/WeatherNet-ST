@@ -47,20 +47,18 @@ Train: 2020-2021 | Validation: 2023 | Test: 2024
 
 XGBoost leverages five years of ERA5 history (2020–2024) to learn powerful nonlinear relationships between past weather patterns and next-day outcomes.
 Instead of modeling sequences explicitly, it converts the climate signal into high-information features (lags, rolling means, spatial encodings, seasonality) and learns how they jointly drive tomorrow’s temperature/precipitation.
+
 ### Intuition 
 
-Intuition.
 XGBoost works by sequentially building small decision trees that learn only what the previous trees could not capture, i.e., the residual errors 
 rm=y−y^m−1
 rm=y−y^m−1
 This forces each new tree Tm to correct specific local mistakes in space–time temperature patterns rather than relearn the full signal. Because the final model is a weighted sum of many such targeted trees 
 f(x)=∑η Tm(x)
 f(x)=∑ηTm(x), it becomes extremely good at modeling non-linear climate relationships, sharp gradients, localized effects, and interactions between predictors. The regularization term
+Ω(T)=γ(#leaves)+λ∥w∥2 keeps individual trees simple, preventing overfitting even when training on high-dimensional ERA5 features. This makes XGBoost ideal for downscaling and error-correction tasks where the goal is to learn the fine-scale structure hidden inside coarse-grid climate variables.
 
-Ω(T)=γ(#leaves)+λ∥w∥2
-Ω(T)=γ(#leaves)+λ∥w∥2
 
-keeps individual trees simple, preventing overfitting even when training on high-dimensional ERA5 features. This makes XGBoost ideal for downscaling and error-correction tasks where the goal is to learn the fine-scale structure hidden inside coarse-grid climate variables.
 The model builds an ensemble of gradient-boosted regression trees, where each new tree aggressively corrects the residual mistakes of the previous ones.
 This boosting mechanism allows XGBoost to capture complex climate dependencies—threshold effects, nonlinear interactions, spatial gradients—far more efficiently than a single model.
 Once trained, it becomes an extremely fast, stable, and high-accuracy forecaster, requiring only the latest feature row (from 31 Dec 2024) to produce a reliable next-day forecast for 1 Jan 2025.

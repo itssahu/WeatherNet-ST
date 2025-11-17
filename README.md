@@ -11,29 +11,37 @@ Train: 2020-2021 | Validation: 2023 | Test: 2024
                ┌─────────────────────────────────────────┐
                │        1. Build Features (x_t)           │
                │  lags + rolling + spatial + calendar     │
-               │  → Convert raw ERA5 into a tabular vector│
+               │  → Convert raw ERA5 into feature vectors │
+               │    (computed from full 2020–2024 data)   │
                └─────────────────────────────────────────┘
                                  │
                                  ▼
-               ┌─────────────────────────────────────────┐
-               │      2. XGBoost Model (K trees)          │
-               │  f(x) = Σ η·T_m(x)                       │
-               │  → Ensemble of trees learns regression   │
-               └─────────────────────────────────────────┘
+               ┌─────────────────────────────────────────────────────┐
+               │            2. XGBoost Model Architecture             │
+               │  f(x) = Σ_{m=1}^K η·T_m(x)                           │
+               │  Each tree T_m fits residuals: r_m = y − ŷ_{m−1}     │
+               │  Regularization: Ω(T)=γ·(#leaves)+λ‖w‖²              │
+               │  → Learns non-linear ERA5 patterns from 2020–2024    │
+               │    using iterative boosting of decision trees        │
+               └─────────────────────────────────────────────────────┘
                                  │
                                  ▼
                ┌─────────────────────────────────────────┐
-               │        3. Training (once)                │
+               │            3. Training (once)            │
                │  init → residual → tree → update         │
-               │  → Each tree corrects previous errors    │
+               │  → Trees iteratively fit 5-year targets  │
+               │    (2020–2024 next-day t2m / tp)         │
                └─────────────────────────────────────────┘
                                  │
                                  ▼
                ┌─────────────────────────────────────────┐
-               │     4. Forecast 1 Jan 2025               │
+               │          4. Forecast 1 Jan 2025          │
                │  x_2025-01-01 → f(x) → prediction        │
-               │  → Final output from sum of all trees    │
+               │  → Uses features built from last          │
+               │    available day (31 Dec 2024)           │
                └─────────────────────────────────────────┘
+
+          
 
 
 
@@ -41,7 +49,7 @@ XGBoost leverages five years of ERA5 history (2020–2024) to learn powerful non
 Instead of modeling sequences explicitly, it converts the climate signal into high-information features (lags, rolling means, spatial encodings, seasonality) and learns how they jointly drive tomorrow’s temperature/precipitation.
 
 The model builds an ensemble of gradient-boosted regression trees, where each new tree aggressively corrects the residual mistakes of the previous ones.
-This boosting mechanism allows XGBoost to capture complex climate dependencies—threshold effects, nonlinear moisture-temperature interactions, spatial gradients—far more efficiently than a single model.
+This boosting mechanism allows XGBoost to capture complex climate dependencies—threshold effects, nonlinear interactions, spatial gradients—far more efficiently than a single model.
 Once trained, it becomes an extremely fast, stable, and high-accuracy forecaster, requiring only the latest feature row (from 31 Dec 2024) to produce a reliable next-day forecast for 1 Jan 2025.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------

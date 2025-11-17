@@ -166,7 +166,7 @@ In August, ConvLSTM perform better than XGBoost for forecasting total precipitat
 
 <img width="2300" height="600" alt="tp_forecast_xgb_vs_convlstm_mm_2025_01_01" src="https://github.com/user-attachments/assets/78baa017-63c8-46de-8fe6-0e972e9709be" />
 
-Both model performs really well on forecasting temperature for next day  
+Both models perform strongly for next-day temperature forecasting across grids, but precipitation remains more challenging, indicating the need for deeper training, larger feature context, or more advanced architectures, such as ensembles or spatiotemporal transformers, to further improve reliability and skill. 
 
 
 

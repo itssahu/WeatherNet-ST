@@ -69,6 +69,7 @@ Train: 2020-2021 | Validation: 2023 | Test: 2024
 #### ConvLSTM Recurrent Block — Intuition 
 
 At each day t, the ConvLSTM updates its spatial memory using four steps. 
+
 Step 1: It concatenates the current input grid with the previous hidden state along the channel dimension ( [x_t , h_{t−1}] ), letting the model see both “today’s weather” and “yesterday’s memory.” 
 
 Step 2: A 3×3 convolution ( W * [x_t , h_{t−1}] ) extracts local spatial patterns such as gradients, anomalies, and moving systems. 
